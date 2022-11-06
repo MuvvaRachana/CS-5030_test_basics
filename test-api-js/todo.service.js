@@ -27,7 +27,8 @@ class todoservice{
     }
 
     delete_todo(id){
-        // Your code here
+        const objx = this.todos.todo.findIndex((obj) => obj.id === id);
+        this.todos.todo.splice(objx, 1);
     }
 
     update_todo(id, todo){

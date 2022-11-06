@@ -32,7 +32,8 @@ class todoservice{
     }
 
     update_todo(id, todo){
-        // Your code here
+        const objx = this.todos.todo.findIndex((obj) => obj.id === id);
+        this.todos.todo[objx] = todo;
     }
 }
 

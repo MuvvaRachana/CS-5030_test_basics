@@ -31,6 +31,11 @@ describe('todo test suite', () => {
         
         expect(todo_service.get_todos().todo.length).toEqual(7);
     }
+         
+    test("delete_todo", () => {
+        todo_service.delete_todo(4);
+        expect(todo_service.get_todos().todo.length).toEqual(6);
+    }
 
 
 });

@@ -49,4 +49,4 @@ workflows:
               only:
                 - master
       - build-and-test-javascript
-      - build and test-api
+      - build-and-test-api

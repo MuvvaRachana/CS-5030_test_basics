@@ -30,18 +30,18 @@ describe('todo test suite', () => {
         todo_service.add_todo({"id":4,"title":"Present my project","done": false});
         
         expect(todo_service.get_todos().todo.length).toEqual(7);
-    }
+    });
          
     test("delete_todo", () => {
         todo_service.delete_todo(4);
         expect(todo_service.get_todos().todo.length).toEqual(6);
-    }
+    });
     
     test("update_todo", () => {
         todo_service.update_todo(2, {"id":2, "title":"Revise for midterms", "done": false});
         const objx = todo_service.get_todos().todo.findIndex((obj) => obj.id === 2);
         expect(todo_service.get_todos().todo[objx].title).toEqual("Revise for midterms");
-    }
+    });
 
 
 });

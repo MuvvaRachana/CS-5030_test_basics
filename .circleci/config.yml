@@ -2,7 +2,7 @@ version: 2.1
 orbs:
   python: circleci/python@2.0.3
 jobs:
-  build-and-test:
+  build-and-test-python:
     docker:
       - image: cimg/python:3.10.4
     steps:
@@ -12,7 +12,41 @@ jobs:
       - run:
           name: Run tests
           command: pytest
+      - run:
+          name: current directory
+          command: pwd
+  build-and-test-javascript:
+     
+     docker:
+       - image: cimg/node:14.20.0
+     steps:
+       - checkout
+       - run:
+           name: install dependencies
+           command: cd test_javascript && npm install
+      
+       - run:
+           name: run tests
+           command: cd test_javascript && npm run test
+  build-and-test-api:
+     docker:
+       - image: cimg/node:14.20.0
+     steps:
+       - checkout
+       - run:
+           name: install dependencies
+           command: cd test-api-js && npm install
+      
+       - run:
+           name: run tests
+           command: cd test-api-js && npm run test
 workflows:
   sample:
     jobs:
-      - build-and-test
+      - build-and-test-python:
+          filters:
+            branches:
+              only:
+                - master
+      - build-and-test-javascript
+      - build-and-test-api
